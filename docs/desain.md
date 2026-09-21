@@ -21,9 +21,9 @@ Contoh data:
 | 2 | Mouse Logitech | Aksesoris | 150000 | 2 |
 | 3 | Keyboard Mekanik | Aksesoris | 450000 | 5 |
 
-## 2. Processing Layer (functions.php)
+# 2. Processing Layer (functions.php)
 
-### Fungsi hitungTotalNilaiStok()
+## Fungsi hitungTotalNilaiStok()
 - Input: array produk
 - Proses: untuk setiap produk, hitung harga x stok, lalu jumlahkan semuanya
 - Output: total nilai aset gudang (angka)
@@ -36,3 +36,22 @@ Contoh: (7.500.000 x 10) + (150.000 x 2) + (450.000 x 5)
 ### Logika Stok Kritis
 - Jika stok < 3, baris tabel diberi warna khusus (misalnya merah)
 - Jika stok >= 3, baris tampil normal
+  
+## 3. Presentation Layer (index.php)
+Langkah kerja:
+1. Memanggil products.php dan functions.php dengan require_once
+2. Mengulang data produk dengan foreach untuk membuat baris tabel
+3. Mengecek stok setiap produk; jika kritis, baris diberi warna merah
+4. Menampilkan total nilai stok di bawah tabel
+
+Rancangan tampilan tabel:
+| ID | Nama | Kategori | Harga | Stok | Deskripsi |
+|---|---|---|---|---|---|
+| ... | ... | ... | ... | ... | ... |
+
+Total Nilai Stok: Rp [hasil hitungTotalNilaiStok()]
+
+## 4. Alur Sistem
+Pengguna membuka index.php -> index.php memuat products.php (data)
+dan functions.php (fungsi) -> data diproses dan ditampilkan sebagai
+tabel HTML -> baris stok kritis diberi warna.
